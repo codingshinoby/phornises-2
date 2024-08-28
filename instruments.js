@@ -4,6 +4,8 @@ window.onload = function () {
         organizationId: 'phronesis---dream-team',
         websiteId: 'phronesis-training.com',
         apiMode: 'sandbox',
+        summary: '.rebilly-instruments-summary',
+        form: '.rebilly-instruments',
         items: [
             {
                 planId: 'premium-membership',
