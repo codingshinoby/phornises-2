@@ -1,10 +1,5 @@
 window.onload = function () {
     RebillyInstruments.mount({
-        deposit: {
-            currency: 'USD',
-            amount: 5.99
-        },
-        jwt: 'the-customer-jwt',
         publishableKey: 'pk_sandbox_8BvWrLbeYLapt5CwsZHmQvOdD24ixpAT5TdU7iX',
         organizationId: 'phronesis---dream-team',
         websiteId: 'phronesis-training.com',
