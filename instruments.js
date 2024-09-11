@@ -16,7 +16,7 @@ window.onload = function () {
 
     RebillyInstruments.mount({
         deposit: {
-            depositRequestId: 'a-deposit-request-id-tests',
+            currency: "USD",
             customAmount: {
                 minimum: 20
             },
