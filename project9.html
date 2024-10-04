@@ -1,0 +1,56 @@
+<!doctype HTML>
+<HTML>
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    /* Create three equal columns that floats next to each other */
+    .column {
+        float: left;
+        width: 33.33%;
+        padding: 10px;
+        height: 300px; /* Should be removed. Only for demonstration */
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+</style>
+<head>
+    <script src="https://cdn.rebilly.com/instruments/@latest/core.js" type="text/javascript"></script>
+    <script src="project8.js" type="text/javascript"></script>
+</head>
+<body>
+<nav>
+    <ul>
+        <li><a href="/" class="highlight">Go to the main page</a></li>
+    </ul>
+</nav>
+
+<div class="row">
+    <div class="column" style="background-color:#aaa;">
+        <img src="project9imgs/villa.jpg">
+        <h2>Villa rental</h2>
+        <p>Rent our villa today</p>
+        <button name="btn-villa">Rent a villa</button>
+    </div>
+    <div class="column" style="background-color:#bbb;">
+        <img src="project9imgs/book.jpg">
+        <h2>E book</h2>
+        <p>Buy our book</p>
+        <button name="btn-book">Buy a book</button>
+    </div>
+    <div class="column" style="background-color:#ccc;">
+        <h2>TBD</h2>
+        <p>Some text..</p>
+    </div>
+</div>
+
+<div class="rebilly-instruments-summary"></div>
+<div class="rebilly-instruments"></div>
+</body>
+</HTML>
