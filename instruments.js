@@ -36,6 +36,8 @@ window.onload = function () {
     //     },
     // });
 
+    const consentToSubscription = 'Subscription billing policy.';
+    const agreeToTOS = 'By subscribing, I have read and understood the [terms of service](https://google.com) and [Privacy Policy](https://google.com).';
 
     RebillyInstruments.mount({
         publishableKey: 'pk_sandbox_8BvWrLbeYLapt5CwsZHmQvOdD24ixpAT5TdU7iX',
