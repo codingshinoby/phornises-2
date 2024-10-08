@@ -11,7 +11,13 @@ window.onload = function () {
         items: [
             {
                 planId: 'default-villa-pricing-plan',
-                quantity: 1
+                quantity: {
+                    default: 1,
+                    multipleOf: 1,
+                    minimum: 1,
+                    maximum: 10
+                },
+                thumbnail: "https://media.istockphoto.com/id/174672992/photo/small-shrinking-currency-dollar-in-inflation-on-white-background.jpg?s=2048x2048&w=is&k=20&c=oKBmdD8iz0dyR1TeCt5ZWokRTs9-BXmlan6Q4UD8usM="
             },
         ],
         paymentInstruments: {
