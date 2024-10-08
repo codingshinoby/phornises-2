@@ -15,6 +15,21 @@
             padding: 0;
         }
 
+        /* Header Styles */
+        .header {
+            background-color: #007bff;
+            padding: 10px 20px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+
         .container {
             display: flex;
             justify-content: space-between;
@@ -82,9 +97,10 @@
     <script src="../project8/project8.js" type="text/javascript"></script>
 </head>
 <body>
-<nav>
-    <a href="/" class="details-button">Go to the main page</a>
-</nav>
+<header class="header">
+    <h1>Phronesis training</h1>
+    <a href="/" class="main-page-button">Go to Main Page</a>
+</header>
 
 <div class="container">
     <!-- Product 1 -->
