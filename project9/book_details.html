@@ -2,14 +2,117 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Book product details</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Should You Invest in Real Estate - eBook</title>
+    <style>
+        /* Header Styles */
+        .header {
+            background-color: #007bff;
+            padding: 10px 20px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+
+        .main-page-button {
+            padding: 10px 15px;
+            background-color: #ffffff;
+            color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 1em;
+            font-weight: bold;
+        }
+
+        .main-page-button:hover {
+            background-color: #f1f1f1;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .product-image {
+            max-width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .product-title {
+            font-size: 2em;
+            margin-top: 20px;
+        }
+
+        .product-description {
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+
+        .product-price {
+            font-size: 1.5em;
+            color: #333;
+            margin: 10px 0;
+        }
+
+        .buy-section {
+            display: flex;
+            align-items: center;
+        }
+
+        .quantity-input {
+            width: 50px;
+            padding: 5px;
+            margin-right: 10px;
+        }
+
+        .buy-button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .buy-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-<p>
-    You want to raise the awareness of importance to invest, especially in real estate, by selling an ebook on it. You are looking to potentially upsell the "Start your villa rental business" online course to customers who buy this ebook.
-</p>
-<a href="book_checkout.html">
-    Buy now
-</a>
+<header class="header">
+    <h1>Phronesis training</h1>
+    <a href="/" class="main-page-button">Go to Main Page</a>
+</header>
+
+<div class="container">
+    <img src="img/book.jpg" alt="Real Estate Ebook" class="product-image">
+    <h1 class="product-title">Why Should You Invest in Real Estate</h1>
+    <p class="product-description">
+        You want to raise awareness of the importance of investing, especially in real estate. This ebook provides valuable insights into why real estate is a key investment opportunity. You can potentially upgrade to the "Start your villa rental business" online course to further enhance your real estate skills.
+    </p>
+    <p class="product-price">$9.99</p>
+
+    <div class="buy-section">
+        <input type="number" min="1" value="1" class="quantity-input">
+        <a href="book_checkout.html" class="buy-button">Buy Now</a>
+    </div>
+</div>
+
 </body>
 </html>
