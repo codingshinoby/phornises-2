@@ -4429,7 +4429,7 @@ select {
 }
 .image-placeholder {
   height: 200px;
-  background-image: url(../../../editor/editor-placeholder-image.svg);
+  background-image: url(/editor/editor-placeholder-image.svg);
   background-size: 100% 100%;
   padding: 15px;
   text-align: center;
@@ -6200,7 +6200,7 @@ select {
 }
 .dynamic-content-placeholder {
   height: 350px;
-  background-image: url(../../../editor/dynamiccontentplaceholder.png);
+  background-image: url(/editor/dynamiccontentplaceholder.png);
   background-size: 100% 100%;
   padding: 15px;
   text-align: center;
