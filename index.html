@@ -1,13 +1,117 @@
-<!doctype HTML>
-<HTML>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phronesis training</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: #007bff;
+            padding: 10px 20px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 1.5em;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .product-card {
+            width: 30%;
+            padding: 20px;
+            border: 1px solid #ddd;
+            text-align: center;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 400px; /* Fixed height for all boxes */
+        }
+
+        .product-image {
+            max-width: 100%;
+            height: 200px; /* Fixed image height */
+            object-fit: cover; /* Ensures images scale properly */
+        }
+
+        .product-title {
+            font-size: 1.2em;
+            margin: 15px 0;
+        }
+
+        .details-button {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .details-button:hover {
+            background-color: #0056b3;
+        }
+
+        @media screen and (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .product-card {
+                width: 80%;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
 <body>
-<nav>
-    <ul>
-        <li><a href="/debriefs" class="highlight">Debriefs</a></li>
-        <li><a href="/project8/project8.html" class="highlight">Project 8</a></li>
-        <li><a href="/project9/project9.html" class="highlight">Project 9</a></li>
-    </ul>
-</nav>
+<header class="header">
+    <h1>Phronesis training</h1>
+</header>
+
+<div class="container">
+    <div class="product-card">
+        <img src="img/debriefs.png" alt="Debriefs" class="product-image">
+        <h2 class="product-title">Debriefs</h2>
+        <a href="/debriefs" class="details-button">View</a>
+    </div>
+
+    <div class="product-card">
+        <img src="img/8.png" alt="Project 8" class="product-image">
+        <h2 class="product-title">Project 8</h2>
+        <a href="/project8/project8.html" class="details-button">View</a>
+    </div>
+
+    <div class="product-card">
+        <img src="img/9.png" alt="Project 9" class="product-image">
+        <h2 class="product-title">Project 9</h2>
+        <a href="/project9/project9.html" class="details-button">View</a>
+    </div>
+</div>
 
 </body>
-</HTML>
+</html>
