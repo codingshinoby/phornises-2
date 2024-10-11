@@ -2548,117 +2548,6 @@
         gtag('config', "");
     </script>
 
-    <script>
-        const PARTNER_PRICE = 697;
-
-        RebillyInstruments.mount({
-            publishableKey: "pk_sandbox_8BvWrLbeYLapt5CwsZHmQvOdD24ixpAT5TdU7iX",
-            organizationId: "phronesis---dream-team",
-            websiteId: "phronesis-training.com",
-            apiMode: "sandbox",
-            paymentInstruments: {
-                address: {
-                    show: ["email", "phoneNumber", "city", "country"],
-                    name: "combined",
-                },
-            },
-            theme: {
-                colorPrimary: "#3A5683",
-            },
-            items: [
-                {
-                    planId: "p10-live",
-                    quantity: 1,
-                },
-            ],
-        });
-
-        document.getElementById('addon1').addEventListener('change', updateRebillyItems);
-        document.getElementById('addon2').addEventListener('change', function() {
-            const partnerSelector = document.getElementById('partnerSelector');
-            const partnerDetails = document.getElementById('partnerDetails');
-            const partnerCount = document.getElementById('partnerCount');
-
-            if (this.checked) {
-                partnerSelector.style.display = 'block';
-                updatePartnerDetails();
-            } else {
-                partnerSelector.style.display = 'none';
-                partnerDetails.style.display = 'none';
-                partnerDetails.innerHTML = '';
-                partnerCount.value = '1';
-                updateAddon2Price(1);
-            }
-            updateRebillyItems();
-        });
-
-        document.getElementById('partnerCount').addEventListener('change', function() {
-            updatePartnerDetails();
-            updateAddon2Price(this.value);
-            updateRebillyItems();
-        });
-
-        function updateRebillyItems() {
-            const addon1Checked = document.getElementById('addon1').checked;
-            const addon2Checked = document.getElementById('addon2').checked;
-            const partnerCount = addon2Checked ? parseInt(document.getElementById('partnerCount').value) : 0;
-
-            const items = [
-                {
-                    planId: "ticket-live",
-                    quantity: 1,
-                }
-            ];
-
-            if (addon1Checked) {
-                items.push({
-                    planId: "p10-live-replay",
-                    quantity: 1,
-                });
-            }
-
-            if (addon2Checked) {
-                items.push({
-                    planId: "p10-live-partner-tickets",
-                    quantity: partnerCount,
-                });
-            }
-
-            console.log('RebillyInstruments.update({ items })', items);
-            RebillyInstruments.update({ items });
-        }
-
-        function updatePartnerDetails() {
-            const partnerCount = document.getElementById('partnerCount').value;
-            const partnerDetails = document.getElementById('partnerDetails');
-            partnerDetails.innerHTML = '';
-            partnerDetails.style.display = 'block';
-
-            for (let i = 1; i <= partnerCount; i++) {
-                partnerDetails.innerHTML += `
-                        <div class="partner-form">
-                            <h4>Partner ${i}</h4>
-                            <div>
-                                <label for="partnerName${i}">Full Name:</label>
-                                <input type="text" id="partnerName${i}" name="partnerName${i}" required>
-                            </div>
-                            <div>
-                                <label for="partnerEmail${i}">Email:</label>
-                                <input type="email" id="partnerEmail${i}" name="partnerEmail${i}" required>
-                            </div>
-                        </div>
-                    `;
-            }
-        }
-
-        function updateAddon2Price(partnerCount) {
-            const addon2Price = document.getElementById('addon2Price');
-            const totalPrice = PARTNER_PRICE * partnerCount;
-            addon2Price.textContent = `$${totalPrice}`;
-        }
-    </script>
-
-
     <!-- Facebook Pixel Code -->
     <script>
         !function (f, b, e, v, n, t, s) {
@@ -5347,6 +5236,115 @@
 
                                 <div class="rebilly-instruments-summary"></div>
                                 <div class="rebilly-instruments"></div>
+                                <script>
+                                    const PARTNER_PRICE = 697;
+
+                                    RebillyInstruments.mount({
+                                        publishableKey: "pk_sandbox_8BvWrLbeYLapt5CwsZHmQvOdD24ixpAT5TdU7iX",
+                                        organizationId: "phronesis---dream-team",
+                                        websiteId: "phronesis-training.com",
+                                        apiMode: "sandbox",
+                                        paymentInstruments: {
+                                            address: {
+                                                show: ["email", "phoneNumber", "city", "country"],
+                                                name: "combined",
+                                            },
+                                        },
+                                        theme: {
+                                            colorPrimary: "#3A5683",
+                                        },
+                                        items: [
+                                            {
+                                                planId: "p10-live",
+                                                quantity: 1,
+                                            },
+                                        ],
+                                    });
+
+                                    document.getElementById('addon1').addEventListener('change', updateRebillyItems);
+                                    document.getElementById('addon2').addEventListener('change', function() {
+                                        const partnerSelector = document.getElementById('partnerSelector');
+                                        const partnerDetails = document.getElementById('partnerDetails');
+                                        const partnerCount = document.getElementById('partnerCount');
+
+                                        if (this.checked) {
+                                            partnerSelector.style.display = 'block';
+                                            updatePartnerDetails();
+                                        } else {
+                                            partnerSelector.style.display = 'none';
+                                            partnerDetails.style.display = 'none';
+                                            partnerDetails.innerHTML = '';
+                                            partnerCount.value = '1';
+                                            updateAddon2Price(1);
+                                        }
+                                        updateRebillyItems();
+                                    });
+
+                                    document.getElementById('partnerCount').addEventListener('change', function() {
+                                        updatePartnerDetails();
+                                        updateAddon2Price(this.value);
+                                        updateRebillyItems();
+                                    });
+
+                                    function updateRebillyItems() {
+                                        const addon1Checked = document.getElementById('addon1').checked;
+                                        const addon2Checked = document.getElementById('addon2').checked;
+                                        const partnerCount = addon2Checked ? parseInt(document.getElementById('partnerCount').value) : 0;
+
+                                        const items = [
+                                            {
+                                                planId: "ticket-live",
+                                                quantity: 1,
+                                            }
+                                        ];
+
+                                        if (addon1Checked) {
+                                            items.push({
+                                                planId: "p10-live-replay",
+                                                quantity: 1,
+                                            });
+                                        }
+
+                                        if (addon2Checked) {
+                                            items.push({
+                                                planId: "p10-live-partner-tickets",
+                                                quantity: partnerCount,
+                                            });
+                                        }
+
+                                        console.log('RebillyInstruments.update({ items })', items);
+                                        RebillyInstruments.update({ items });
+                                    }
+
+                                    function updatePartnerDetails() {
+                                        const partnerCount = document.getElementById('partnerCount').value;
+                                        const partnerDetails = document.getElementById('partnerDetails');
+                                        partnerDetails.innerHTML = '';
+                                        partnerDetails.style.display = 'block';
+
+                                        for (let i = 1; i <= partnerCount; i++) {
+                                            partnerDetails.innerHTML += `
+                        <div class="partner-form">
+                            <h4>Partner ${i}</h4>
+                            <div>
+                                <label for="partnerName${i}">Full Name:</label>
+                                <input type="text" id="partnerName${i}" name="partnerName${i}" required>
+                            </div>
+                            <div>
+                                <label for="partnerEmail${i}">Email:</label>
+                                <input type="email" id="partnerEmail${i}" name="partnerEmail${i}" required>
+                            </div>
+                        </div>
+                    `;
+                                        }
+                                    }
+
+                                    function updateAddon2Price(partnerCount) {
+                                        const addon2Price = document.getElementById('addon2Price');
+                                        const totalPrice = PARTNER_PRICE * partnerCount;
+                                        addon2Price.textContent = `$${totalPrice}`;
+                                    }
+                                </script>
                             </div>
                         </div>
                     </div>
