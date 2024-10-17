@@ -23,7 +23,7 @@
         }
 
         /* Header Styles */
-        .header {
+        .header, .footer {
             background-color: #007bff;
             padding: 10px 20px;
             color: white;
@@ -32,7 +32,7 @@
             align-items: center;
         }
 
-        .header h1 {
+        .header h1 .footer {
             margin: 0;
             font-size: 1.5em;
         }
@@ -54,9 +54,59 @@
         }
 
         .casino-image {
+            display: block;
+            margin: 20px auto;
             max-width: 100%;
-            height: 200px; /* Fixed image height */
-            object-fit: cover; /* Ensures images scale properly */
+            height: auto;
+        }
+
+        /* Deposit Page Styles */
+        .amount-button, #custom-amount-button {
+            padding: 10px 15px;
+            background-color: #ffffff;
+            color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            margin: 5px;
+        }
+
+        .amount-button:hover, #deposit-button:hover {
+            background-color: #f1f1f1;
+        }
+
+        .custom-amount input {
+            padding: 10px;
+            border: 2px solid #007bff;
+            border-radius: 5px;
+            font-size: 1em;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .custom-amount {
+            margin-top: 10px;
+        }
+
+        /* Center and spacing for main content */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+        }
+
+        h2 {
+            color: #007bff;
+        }
+
+        #predefined-amounts, .custom-amount, #selected-amount {
+            margin: 10px;
         }
     </style>
 </head>
@@ -88,5 +138,9 @@
 
 <div class="rebilly-instruments-summary"></div>
 <div class="rebilly-instruments"></div>
+
+<div class="footer">
+    <p>Phronesis</p>
+</div>
 </body>
 </HTML>
