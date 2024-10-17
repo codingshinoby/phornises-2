@@ -47,7 +47,7 @@ window.onload = function () {
     predefinedButtons.forEach(button => {
         button.addEventListener('click', () => {
             amountDisplay.textContent = button.getAttribute('data-amount');
-            amount = button.getAttribute('data-amount');
+            amount = parseFloat(button.getAttribute('data-amount').toString());
         });
     });
 
@@ -58,8 +58,8 @@ window.onload = function () {
         // Check if the custom amount is within the valid range
         if (customAmount >= 10 && customAmount <= 5000) {
             amountDisplay.textContent = customAmount.toString();
-            amount = customAmount;
-        } else {
+            amount = parseFloat(customAmount.toString());
+        } else if (amount <= 0 || isNaN(amount)) {
             alert('Please enter an amount between $10 and $5000.');
         }
     });
