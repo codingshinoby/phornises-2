@@ -103,6 +103,7 @@ window.onload = function () {
     // });
 
     document.getElementById('deposit-button').addEventListener('click', function() {
+        RebillyInstruments.destroy();
         const depositAmount = parseFloat(amount);
 
         if (isNaN(depositAmount) || depositAmount <= 0) {
