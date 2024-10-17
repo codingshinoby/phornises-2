@@ -40,7 +40,7 @@ window.onload = function () {
     const amountDisplay = document.getElementById('amount-display');
     const predefinedButtons = document.querySelectorAll('.amount-button');
     const customInput = document.getElementById('custom-amount-input');
-    const customButton = document.getElementById('custom-amount-button');
+    const customButton = document.getElementById('deposit-button');
     let amount = 0;
 
     // Handle predefined amount button click
