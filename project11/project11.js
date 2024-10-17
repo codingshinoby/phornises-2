@@ -102,44 +102,53 @@ window.onload = function () {
     //     },
     // });
 
-    currentMount = RebillyInstruments.mount({
-        publishableKey: "pk_sandbox_8BvWrLbeYLapt5CwsZHmQvOdD24ixpAT5TdU7iX",
-        organizationId: "phronesis---dream-team",
-        websiteId: "phronesis-training.com",
-        apiMode: "sandbox",
-        locale: "en",
-        money: {
-            amount: amount,
-            currency: "USD"
-        },
-        paymentInstruments: {
-            address: {
-                require: [
-                    "email",
-                    "address",
-                    "phoneNumber",
-                    "country",
-                    "city",
-                    "region",
-                    "postalCode",
-                ],
-            },
-        },
-        onSuccess: function(result) {
-            console.log('DEPOSITED:', result);
-            console.log('AMOUNT:', amount);
-            RebillyInstruments.destroy();
-        },
-        onError: function(error) {
-            console.error('Payment error:', error);
-            alert('There was an error processing your deposit. Please try again.');
+    document.getElementById('deposit-button').addEventListener('click', function() {
+        const depositAmount = parseFloat(amount);
+
+        if (isNaN(depositAmount) || depositAmount <= 0) {
+            alert('Please enter a valid deposit amount.');
+            return;
         }
-    });
-    RebillyInstruments.on('instrument-ready', (instrument) => {
-        console.info('instrument-ready', instrument);
-    });
-    RebillyInstruments.on('purchase-completed', (purchase) => {
-        console.info('purchase-completed', purchase);
+
+        RebillyInstruments.mount({
+            publishableKey: "pk_sandbox_8BvWrLbeYLapt5CwsZHmQvOdD24ixpAT5TdU7iX",
+            organizationId: "phronesis---dream-team",
+            websiteId: "phronesis-training.com",
+            apiMode: "sandbox",
+            locale: "en",
+            money: {
+                amount: depositAmount,
+                currency: "USD"
+            },
+            paymentInstruments: {
+                address: {
+                    require: [
+                        "email",
+                        "address",
+                        "phoneNumber",
+                        "country",
+                        "city",
+                        "region",
+                        "postalCode",
+                    ],
+                },
+            },
+            onSuccess: function(result) {
+                console.log('DEPOSITED:', result);
+                console.log('AMOUNT:', amount);
+                RebillyInstruments.destroy();
+            },
+            onError: function(error) {
+                console.error('Payment error:', error);
+                alert('There was an error processing your deposit. Please try again.');
+            }
+        });
+        RebillyInstruments.on('instrument-ready', (instrument) => {
+            console.info('instrument-ready', instrument);
+        });
+        RebillyInstruments.on('purchase-completed', (purchase) => {
+            console.info('purchase-completed', purchase);
+        });
     });
 
 }
