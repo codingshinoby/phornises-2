@@ -49,7 +49,7 @@
             z-index: 1000; /* Ensure it stays on top */
         }
 
-        .header h1 .footer {
+        h1 .footer {
             margin: 0;
             font-size: 1.5em;
         }
@@ -125,17 +125,6 @@
             margin-top: 10px;
         }
 
-        /* Center and spacing for main content */
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            background-color: #f8f9fa;
-        }
-
         h2 {
             color: #007bff;
         }
@@ -144,16 +133,28 @@
             margin: 10px;
         }
 
+        body {
+            padding-top: 100px; /* Increase padding to account for the header height */
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            background-color: #f8f9fa;
+            margin: 0;
+        }
+
+        /* Welcome text styles */
         .welcome-text {
             max-width: 800px; /* Limit the width for better readability */
             text-align: center;
-            margin: 500px auto; /* Center the text block */
+            margin: 40px auto; /* Add more margin to push it further down */
             padding: 10px;
             background-color: #ffffff;
             border-radius: 5px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-
     </style>
 </head>
 <body>
