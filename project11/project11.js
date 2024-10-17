@@ -40,7 +40,7 @@ window.onload = function () {
     const amountDisplay = document.getElementById('amount-display');
     const predefinedButtons = document.querySelectorAll('.amount-button');
     const customInput = document.getElementById('custom-amount-input');
-    const customButton = document.getElementById('deposit-button');
+    const depositButton = document.getElementById('deposit-button');
     let amount = 0;
 
     // Handle predefined amount button click
@@ -52,7 +52,7 @@ window.onload = function () {
     });
 
     // Handle custom amount submission
-    customButton.addEventListener('click', () => {
+    depositButton.addEventListener('click', () => {
         const customAmount = parseFloat(customInput.value);
 
         // Check if the custom amount is within the valid range
@@ -104,6 +104,7 @@ window.onload = function () {
 
     document.getElementById('deposit-button').addEventListener('click', function() {
         RebillyInstruments.destroy();
+        document.getElementById('custom-amount-input').value = "";
         const depositAmount = parseFloat(amount);
 
         if (isNaN(depositAmount) || depositAmount <= 0) {
