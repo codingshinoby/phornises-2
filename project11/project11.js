@@ -19,7 +19,7 @@ window.onload = function () {
         if (customAmount >= 10 && customAmount <= 5000) {
             amountDisplay.textContent = customAmount.toString();
             amount = parseFloat(customAmount.toString());
-        } else if (amount <= 0 || isNaN(amount)) {
+        } else if (amount <= 9 || isNaN(amount)) {
             alert('Please enter an amount between $10 and $5000.');
         }
     });
