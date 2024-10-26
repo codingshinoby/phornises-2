@@ -1,83 +1,81 @@
 const RebillyAPI = require("rebilly-js-sdk").default;
 const express = require("express");
 const bodyParser = require("body-parser");
+
 const app = express();
 app.use(express.static("client"));
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-exports.handler = async (event, context) => {
+const REBILLY_API_SECRET_KEY = "sk_sandbox_-F5XRF1gFQRsyH7rXSbCBCN3S-wf5ZIDffPZaPa";
+const REBILLY_WEBSITE_ID = "phronesis-training.com";
+const REBILLY_ORGANIZATION_ID = "phronesis---dream-team";
 
-    const REBILLY_API_SECRET_KEY = "sk_sandbox_-F5XRF1gFQRsyH7rXSbCBCN3S-wf5ZIDffPZaPa";
-    const REBILLY_WEBSITE_ID = "phronesis-training.com";
-    const REBILLY_ORGANIZATION_ID = "phronesis---dream-team";
+const rebilly = RebillyAPI({
+    sandbox: true,
+    apiKey: REBILLY_API_SECRET_KEY,
+});
 
-    const rebilly = RebillyAPI({
-        sandbox: true,
-        apiKey: REBILLY_API_SECRET_KEY,
-    });
+app.get("/deposit", async (req, res) => {
+    res.redirect(301, "/deposit.html");
+});
 
-    app.get("/deposit", async (req, res) => {
-        res.redirect(301, "/deposit.html");
-    });
+app.post("/deposit-request", async function (req, res) {
+    const { customerId, currency } = req.body;
 
-    app.post("/deposit-request", async function (req, res) {
-        const { customerId, currency } = req.body;
-        const response = {};
+    try {
         const data = {
             mode: "passwordless",
             customerId,
         };
-        const { fields: login } = await rebilly.customerAuthentication.login({
-            data,
-        });
-        const { fields: exchangeToken } =
-            await rebilly.customerAuthentication.exchangeToken({
-                token: login.token,
-                data: {
-                    acl: [
-                        {
-                            scope: {
-                                organizationId: [REBILLY_ORGANIZATION_ID],
-                            },
-                            permissions: [
-                                "PostToken",
-                                "PostDigitalWalletValidation",
-                                "StorefrontGetAccount",
-                                "StorefrontPatchAccount",
-                                "StorefrontPostPayment",
-                                "StorefrontGetTransactionCollection",
-                                "StorefrontGetTransaction",
-                                "StorefrontGetPaymentInstrumentCollection",
-                                "StorefrontPostPaymentInstrument",
-                                "StorefrontGetPaymentInstrument",
-                                "StorefrontPatchPaymentInstrument",
-                                "StorefrontPostPaymentInstrumentDeactivation",
-                                "StorefrontGetWebsite",
-                                "StorefrontGetInvoiceCollection",
-                                "StorefrontGetInvoice",
-                                "StorefrontGetProductCollection",
-                                "StorefrontGetProduct",
-                                "StorefrontPostReadyToPay",
-                                "StorefrontGetPaymentInstrumentSetup",
-                                "StorefrontPostPaymentInstrumentSetup",
-                                "StorefrontGetDepositRequest",
-                                "StorefrontGetDepositStrategy",
-                                "StorefrontPostDeposit",
-                            ],
+        const { fields: login } = await rebilly.customerAuthentication.login({ data });
+        const { fields: exchangeToken } = await rebilly.customerAuthentication.exchangeToken({
+            token: login.token,
+            data: {
+                acl: [
+                    {
+                        scope: {
+                            organizationId: [REBILLY_ORGANIZATION_ID],
                         },
-                    ],
-                    customClaims: {
-                        websiteId: REBILLY_WEBSITE_ID,
+                        permissions: [
+                            "PostToken",
+                            "PostDigitalWalletValidation",
+                            "StorefrontGetAccount",
+                            "StorefrontPatchAccount",
+                            "StorefrontPostPayment",
+                            "StorefrontGetTransactionCollection",
+                            "StorefrontGetTransaction",
+                            "StorefrontGetPaymentInstrumentCollection",
+                            "StorefrontPostPaymentInstrument",
+                            "StorefrontGetPaymentInstrument",
+                            "StorefrontPatchPaymentInstrument",
+                            "StorefrontPostPaymentInstrumentDeactivation",
+                            "StorefrontGetWebsite",
+                            "StorefrontGetInvoiceCollection",
+                            "StorefrontGetInvoice",
+                            "StorefrontGetProductCollection",
+                            "StorefrontGetProduct",
+                            "StorefrontPostReadyToPay",
+                            "StorefrontGetPaymentInstrumentSetup",
+                            "StorefrontPostPaymentInstrumentSetup",
+                            "StorefrontGetDepositRequest",
+                            "StorefrontGetDepositStrategy",
+                            "StorefrontPostDeposit",
+                        ],
                     },
+                ],
+                customClaims: {
+                    websiteId: REBILLY_WEBSITE_ID,
                 },
-            });
+            },
+        });
 
-        let amounts = [10, 20, 30, 40]
+        let amounts = [10, 20, 30, 40];
         if (currency === 'CAD') {
-            amounts = [100, 120, 130, 140]
+            amounts = [100, 120, 130, 140];
         }
+
         const requestDepositData = {
             websiteId: REBILLY_WEBSITE_ID,
             customerId,
@@ -89,14 +87,27 @@ exports.handler = async (event, context) => {
             data: requestDepositData,
         });
 
-        response.statusCode = 200;
-        response.body.token = exchangeToken.token;
-        response.body.depositRequestId = depositFields.id;
-
-        return response
-    });
-    return {
-        statusCode: 400,
-        body: JSON.stringify({ error: 'Method Not Allowed' }),
+        // Return response
+        res.status(200).json({
+            token: exchangeToken.token,
+            depositRequestId: depositFields.id,
+        });
+    } catch (error) {
+        console.error('Error processing deposit request:', error);
+        res.status(500).json({
+            error: 'Failed to process deposit request',
+            details: error.message,
+        });
     }
-}
+});
+
+// Handler for Netlify Functions
+exports.handler = async (event, context) => {
+    // Use express to handle the request
+    return new Promise((resolve, reject) => {
+        app(req, res => {
+            res.status(400).json({ error: 'Method Not Allowed' });
+            resolve(res);
+        });
+    });
+};
