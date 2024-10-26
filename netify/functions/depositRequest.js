@@ -17,11 +17,12 @@ const rebilly = RebillyAPI({
     apiKey: REBILLY_API_SECRET_KEY,
 });
 
+// Define your Express routes
 app.get("/deposit", async (req, res) => {
     res.redirect(301, "/deposit.html");
 });
 
-app.post("/deposit-request", async function (req, res) {
+app.post("/deposit-request", async (req, res) => {
     const { customerId, currency } = req.body;
 
     try {
@@ -103,11 +104,36 @@ app.post("/deposit-request", async function (req, res) {
 
 // Handler for Netlify Functions
 exports.handler = async (event, context) => {
-    // Use express to handle the request
+    // Create a new Promise to resolve the response
     return new Promise((resolve, reject) => {
-        app(req, res => {
-            res.status(400).json({ error: 'Method Not Allowed' });
-            resolve(res);
+        // Use the Express app to handle the request
+        app.handle(event, {
+            send: (statusCode, body) => {
+                resolve({
+                    statusCode,
+                    body: JSON.stringify(body),
+                });
+            },
+            json: (body) => {
+                resolve({
+                    statusCode: 200,
+                    body: JSON.stringify(body),
+                });
+            },
+            status: (code) => ({
+                send: (body) => {
+                    resolve({
+                        statusCode: code,
+                        body: JSON.stringify(body),
+                    });
+                },
+                json: (body) => {
+                    resolve({
+                        statusCode: code,
+                        body: JSON.stringify(body),
+                    });
+                },
+            }),
         });
     });
 };
