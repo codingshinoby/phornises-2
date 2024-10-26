@@ -93,6 +93,10 @@ exports.handler = async (event, context) => {
         response.body.token = exchangeToken.token;
         response.body.depositRequestId = depositFields.id;
 
-        res.send(response);
+        return response
     });
+    return {
+        statusCode: 400,
+        body: JSON.stringify({ error: 'Method Not Allowed' }),
+    }
 }
