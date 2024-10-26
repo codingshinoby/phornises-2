@@ -1,6 +1,6 @@
 [build]
-  functions = "functions"  # This tells Netlify where to find your functions
-  publish = "public"       # This is the directory for your static files
+  functions = "./netify/functions"  # This tells Netlify where to find your functions
+  publish = "./netify/public"       # This is the directory for your static files
 
 [[redirects]]
   from = "/deposit-request"  # The route for your function
