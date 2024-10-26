@@ -1,3 +1,5 @@
+const RebillyAPI = require("rebilly-js-sdk").default;
+
 exports.handler = async (event, context) => {
 
     const REBILLY_API_SECRET_KEY = "sk_sandbox_-F5XRF1gFQRsyH7rXSbCBCN3S-wf5ZIDffPZaPa";
