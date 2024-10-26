@@ -28,7 +28,7 @@ window.onload = function () {
         RebillyInstruments.destroy();
         showLoadingIndicator();
 
-        const response = await fetch("/api/deposit-request", {
+        const response = await fetch("/deposit-request", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
