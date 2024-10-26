@@ -89,8 +89,9 @@ exports.handler = async (event, context) => {
             data: requestDepositData,
         });
 
-        response.token = exchangeToken.token;
-        response.depositRequestId = depositFields.id;
+        response.statusCode = 200;
+        response.body.token = exchangeToken.token;
+        response.body.depositRequestId = depositFields.id;
 
         res.send(response);
     });
