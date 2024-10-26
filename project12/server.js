@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const RebillyAPI = require("rebilly-js-sdk").default;
 const app = express();
-const port = 8080;
+const port = 80;
 
 app.use(express.static("client"));
 app.use(express.json());
@@ -95,6 +95,6 @@ app.post("/deposit-request", async function (req, res) {
     res.send(response);
 });
 
-app.listen(port, '127.0.0.1', () => {
+app.listen(port, () => {
     console.log(`Sandbox listening on port ${port}`);
 });
