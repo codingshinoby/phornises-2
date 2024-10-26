@@ -95,6 +95,6 @@ app.post("/deposit-request", async function (req, res) {
     res.send(response);
 });
 
-app.listen(port, () => {
+app.listen(port, '127.0.0.1', () => {
     console.log(`Sandbox listening on port ${port}`);
 });
