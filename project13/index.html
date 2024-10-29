@@ -1,0 +1,92 @@
+<!doctype HTML>
+<HTML>
+<head>
+    <script src="https://cdn.rebilly.com/instruments/@latest/core.js" type="text/javascript"></script>
+    <script src="project13.js" type="text/javascript"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            padding-bottom: 60px; /* Adjust to avoid overlap with footer */
+            min-height: 100vh; /* Ensure content takes full height */
+        }
+
+        .header, .footer {
+            background-color: #007bff;
+            padding: 10px 20px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Fix header to the top */
+        .header {
+            top: 0;
+        }
+
+        /* Fix footer to the bottom */
+        .footer {
+            bottom: 0;
+        }
+
+        .main-page-button {
+            padding: 10px 15px;
+            background-color: #ffffff;
+            color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 1em;
+            font-weight: bold;
+        }
+
+        .main-page-button:hover {
+            background-color: #f1f1f1;
+        }
+
+        .custom-amount input {
+            padding: 10px;
+            border: 2px solid #007bff;
+            border-radius: 5px;
+            font-size: 1em;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 10px;
+        }
+
+        /* Center and spacing for main content */
+        h2 {
+            color: #007bff;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<header class="header">
+    <h1>Phronesis training</h1>
+    <a href="/" class="main-page-button">Go to Main Page</a>
+</header>
+
+<div id="currency-toggle">
+    <button id="usd-button" class="">USD</button>
+    <button id="cad-button" class="active">CAD</button>
+</div>
+
+<div class="container">
+    <div class="rebilly-instruments-summary"></div>
+    <div class="rebilly-instruments"></div>
+</div>
+
+<div class="footer">
+    <p>Phronesis</p>
+</div>
+</body>
+</HTML>
